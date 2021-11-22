@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.weather_detail.WeatherFragment">
+
+    <ImageView
+        android:id="@+id/dayNightIv"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/day_city"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/panel"
+        android:layout_width="match_parent"
+        android:layout_height="690dp"
+        android:layout_marginTop="190dp"
+        android:="40dp"
+        android:background="@drawable/panel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:fontFamily="@font/assistant_extralight"
+        android:text="Day, DD Month YYYY | H:MMPM/AM"
+        android:textColor="@color/light_gray2"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dayNightIv"/>
+
+    <TextView
+        android:id="@+id/locationTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City, Country"
+        android:textStyle="bold"
+        android:textColor="#0D82FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dayNightIv"
+        android:layout_marginEnd="30dp" />
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/location"
+        app:layout_constraintStart_toEndOf="@id/locationTv"
+        app:layout_constraintTop_toBottomOf="@id/dayNightIv"
+        android:layout_marginEnd="15dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rectangle"
+        app:layout_constraintStart_toStartOf="@id/locationTv"
+        app:layout_constraintEnd_toEndOf="@id/locationTv"
+        app:layout_constraintBottom_toBottomOf="@id/locationTv"
+        app:layout_constraintTop_toBottomOf="@id/dayNightIv"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/dateTv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="45dp"
+        android:layout_marginTop="20dp">
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
