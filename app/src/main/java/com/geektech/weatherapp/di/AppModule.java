@@ -1,4 +1,4 @@
-package com.geektech.di;
+package com.geektech.weatherapp.di;
 
 
 import com.geektech.weatherapp.data.remote.RetrofitClient;
