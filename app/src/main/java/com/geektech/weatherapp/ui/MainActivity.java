@@ -7,6 +7,9 @@ import android.os.Bundle;
 import com.geektech.weatherapp.R;
 import com.geektech.weatherapp.databinding.ActivityMainBinding;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;

@@ -9,10 +9,30 @@
         android:id="@+id/weatherFragment"
         android:name="com.geektech.weatherapp.ui.weather_fragments.WeatherFragment"
         android:label="fragment_weather"
-        tools:layout="@layout/fragment_weather" />
+        tools:layout="@layout/fragment_weather">
+        <argument
+            android:name="cityName"
+            android:defaultValue="London"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_weatherFragment_to_cityFragment"
+            app:destination="@id/cityFragment" />
+
+    </fragment>
+
     <fragment
-        android:id="@+id/baseFragment"
-        android:name="com.geektech.weatherapp.ui.base.BaseFragment"
-        android:label="fragment_base"
-        tools:layout="@layout/fragment_base" />
+        android:id="@+id/cityFragment"
+        android:name="com.geektech.weatherapp.ui.weather_fragments.CityFragment"
+        android:label="fragment_city"
+        tools:layout="@layout/fragment_city">
+        <action
+            android:id="@+id/action_cityFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" >
+            <argument
+                android:name="cityName"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
 </navigation>

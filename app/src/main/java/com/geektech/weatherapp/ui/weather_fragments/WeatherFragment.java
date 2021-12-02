@@ -1,10 +1,13 @@
 package com.geektech.weatherapp.ui.weather_fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,10 +29,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
 
-
-
+    private WeatherFragmentArgs args;
     private WeatherFragmentViewModel viewModel;
     private Main main;
     private Wind wind;
@@ -46,6 +51,7 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         adapter = new ForecastAdapter();
+        args = WeatherFragmentArgs.fromBundle(getArguments());
     }
 
     @Override
@@ -56,22 +62,28 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
     @Override
     protected void setupUI() {
         viewModel = new ViewModelProvider(requireActivity()).get(WeatherFragmentViewModel.class);
-        viewModel.fetchCurrentForeCast();
+        viewModel.fetchCurrentForeCast(args.getCityName());
+
+        binding.cityBtn.setOnClickListener(view -> {
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
+            navController.navigate(R.id.action_weatherFragment_to_cityFragment);
+        });
     }
 
     @Override
     protected void setupObservers() {
         viewModel.LiveData.observe(getViewLifecycleOwner(), new Observer<Resource<Example>>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(Resource<Example> exampleResource) {
-                switch (exampleResource.status){
-                    case  SUCCESS:{
+                switch (exampleResource.status) {
+                    case SUCCESS: {
                         main = exampleResource.data.getMain();
                         wind = exampleResource.data.getWind();
-                        example =  exampleResource.data;
+                        example = exampleResource.data;
                         sys = exampleResource.data.getSys();
                         weatherList = exampleResource.data.getWeather();
-                        SimpleDateFormat sdf = new SimpleDateFormat("hh:MM");
+                        @SuppressLint("SimpleDateFormat")  SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 
                         binding.sunnyTv.setText(weatherList.get(0).getMain());
                         binding.cityBtn.setText(example.getName());
@@ -86,15 +98,15 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
                         binding.pressureTV.setText(main.getPressure() + "mBar");
                         binding.sunriseTV.setText(sdf.format(sys.getSunrise()));
                         binding.sunsetTV.setText(sdf.format(sys.getSunset()));
-                        binding.windTV.setText(wind.getSpeed() +  "m/s");
+                        binding.windTV.setText(wind.getSpeed() + "m/s");
                         binding.dayTimeTV.setText(sdf.format(example.getDt()));
                         break;
                     }
-                    case LOADING:{
+                    case LOADING: {
                         binding.progress.setVisibility(View.VISIBLE);
                         break;
                     }
-                    case ERROR:{
+                    case ERROR: {
                         binding.progress.setVisibility(View.GONE);
                         break;
                     }

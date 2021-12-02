@@ -65,7 +65,7 @@
                 android:id="@+id/cityBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kyrgyzstan, Bishkek"
+                tools:text="Kyrgyzstan, Bishkek"
                 android:textSize="13sp"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +96,7 @@
 
                 <TextView
                     android:id="@+id/sunnyTv"
-                    android:text="Sunny"
+                    tools:text="Sunny"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
@@ -120,7 +120,7 @@
                     android:id="@+id/currentTempTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="33"
+                    tools:text="33"
                     android:textSize="40sp"
                     android:textColor="@color/black"
                     />
@@ -184,7 +184,7 @@
                     android:id="@+id/humidityTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="35°C"
+                    tools:text="35°C"
                     android:textSize="20sp"
                     />
 
@@ -218,7 +218,7 @@
                     android:id="@+id/pressureTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="35°C"
+                    tools:text="35°C"
                     android:textSize="20sp"
                     />
 
@@ -252,7 +252,7 @@
                     android:id="@+id/windTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="35°C"
+                    tools:text="35°C"
                     android:textSize="20sp"
                     />
 
@@ -286,7 +286,7 @@
                     android:id="@+id/sunriseTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="35°C"
+                    tools:text="35°C"
                     android:textSize="20sp"
                     />
 
@@ -319,7 +319,7 @@
                     android:id="@+id/sunsetTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="25°C"
+                    tools:text="25°C"
                     android:textSize="20sp"
                     />
 
@@ -353,7 +353,7 @@
                     android:id="@+id/dayTimeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="35°C"
+                    tools:text="35°C"
                     android:textSize="20sp"
                     />
 
